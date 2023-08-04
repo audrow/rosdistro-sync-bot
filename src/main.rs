@@ -80,16 +80,10 @@ async fn run(
         }
 
         if is_in_sync && !is_labeled_as_in_sync_hold {
-            info!(
-                "Adding '{}' label to issue #{}: {}",
-                SYNC_HOLD_LABEL, issue.number, issue.title
-            );
+            info!("Adding '{}' label to issue #{}: {}", SYNC_HOLD_LABEL, issue.number, issue.title);
             labels.push(String::from(SYNC_HOLD_LABEL));
         } else if !is_in_sync && is_labeled_as_in_sync_hold {
-            info!(
-                "Removing '{}' label from issue #{}: {}",
-                SYNC_HOLD_LABEL, issue.number, issue.title
-            );
+            info!("Removing '{}' label from issue #{}: {}", SYNC_HOLD_LABEL, issue.number, issue.title);
             labels.remove(
                 labels
                     .iter()
@@ -135,7 +129,7 @@ async fn main() {
     let repo_path_to_sync_status = env::var("GITHUB_REPO_PATH_TO_SYNC_STATUS")
         .expect("GITHUB_REPO_PATH_TO_SYNC_STATUS not defined");
     let personal_access_token =
-        env::var("GITHUB_PERSONAL_ACCESS_TOKEN").expect("GITHUB_PERSONAL_ACCESS_TOKEN not defined");
+        env::var("PERSONAL_ACCESS_TOKEN").expect("PERSONAL_ACCESS_TOKEN not defined");
 
     let url_to_file = format!("https://raw.githubusercontent.com/{repo_org}/{repo_name}/{repo_branch_name}/{repo_path_to_sync_status}");
     let distro_to_sync_status = get_rosdisto_to_sync_status(url_to_file).await;
