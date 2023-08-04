@@ -1,0 +1,16 @@
+[package]
+name = "rosdistro-sync-bot"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv = "0.15.0"
+log = "0.4.19"
+octocrab = "0.29.1"
+reqwest = "0.11.18"
+serde = { version = "1.0.181", features = ["derive"]}
+serde_yaml = "0.9.25"
+tokio = { version = "1.29.1", features = ["full"] }
+yaml-rust = "0.4.5"
